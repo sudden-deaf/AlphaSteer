@@ -9,3 +9,4 @@ config/
 responses/
 git_codes/
 data/
+venv/

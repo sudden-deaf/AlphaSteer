@@ -12,16 +12,17 @@ set MODEL_NAME=meta-llama/Llama-3.1-8B-Instruct
 set DEVICE=cuda:0
 
 REM =========================
-REM Steering / Generation
+REM Calculate steering matrix
 REM =========================
 
-set GENERATE_CONFIG_DIR=config\llama3.1
-echo Generating response for %NICKNAME%
+set STEERING_SAVE_PATH=data\steering_matrix\steering_matrix_%NICKNAME%.pt
+echo Calculating steering matrix for %NICKNAME%
 
-for %%F in ("%GENERATE_CONFIG_DIR%\*.yaml") do (
-    echo Generating response for %%F
-    python src\generate_response.py --config_path "%%F"
-)
+python src\calc_steering_matrix.py ^
+    --model_name "%NICKNAME%" ^
+    --embedding_dir "%EMBEDDING_DIR%" ^
+    --device "%DEVICE%" ^
+    --save_path "%STEERING_SAVE_PATH%"
 
 echo Done.
 endlocal
