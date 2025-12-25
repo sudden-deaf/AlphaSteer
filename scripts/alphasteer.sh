@@ -2,11 +2,11 @@
 
 TRAIN_VAL_DIR=data/instructions/train_val
 # Configuration - Change these variables to test different models and output directories
-EMBEDDING_DIR=data/embeddings/llama3.1  # Output directory for embeddings
-NICKNAME=llama3.1
-MODEL_NAME=meta-llama/Llama-3.1-8B-Instruct  # Model name from HuggingFace
+EMBEDDING_DIR=data/embeddings/qwen2.5  # Output directory for embeddings
+NICKNAME=qwen2.5
+MODEL_NAME=Qwen/Qwen2.5-7B-Instruct  # Model name from HuggingFace
 
-DEVICE=cuda:4
+DEVICE=cuda:0
 
 
 # Extract embeddings
@@ -46,3 +46,4 @@ for file in $GENERATE_CONFIG_DIR/*.yaml; do
     echo "Generating response for $file"
     python src/generate_response.py --config_path $file
 done
+

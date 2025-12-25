@@ -1,12 +1,6 @@
+# Python cache
 __pycache__/
+*.pyc
 
-embeddings/
-steering_matrix/
-
-requirements(drop).txt
-
-config/
-responses/
-git_codes/
-data/
+# Virtual environment
 venv/
