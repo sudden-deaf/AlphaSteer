@@ -6,16 +6,16 @@ REM Configuration
 REM =========================
 
 set TRAIN_VAL_DIR=data\instructions\train_val
-set EMBEDDING_DIR=data\embeddings\llama3.1
-set NICKNAME=llama3.1
-set MODEL_NAME=meta-llama/Llama-3.1-8B-Instruct
+set EMBEDDING_DIR=data\embeddings\qwen2.5
+set NICKNAME=qwen2.5
+set MODEL_NAME=Qwen/Qwen2.5-7B-Instruct
 set DEVICE=cuda:0
 
 REM =========================
 REM Steering / Generation
 REM =========================
 
-set GENERATE_CONFIG_DIR=config\llama3.1
+set GENERATE_CONFIG_DIR=config\qwen2.5
 echo Generating response for %NICKNAME%
 
 for %%F in ("%GENERATE_CONFIG_DIR%\*.yaml") do (

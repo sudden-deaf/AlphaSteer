@@ -23,7 +23,7 @@ torch.manual_seed(42)
 np.random.seed(42)
 
 from transformers import AutoTokenizer, LlamaConfig
-from . import MLPSteerLlamaForCausalLM, MLPSteerQwen2ForCausalLM, MLPSteerGemma2ForCausalLM
+from . import MLPSteerQwen2ForCausalLM
 import json
 
 from jinja2 import Template
@@ -68,9 +68,7 @@ def parse_args():
 
 # Only the layer indices for each model, in list format
 STEERING_LAYERS = {
-    "llama3.1": [8, 9, 10, 11, 12, 13, 14, 16, 18, 19],
     "qwen2.5": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19], 
-    "gemma2": [6, 8, 10, 11, 12, 13, 14, 15, 16, 18, 22],
 }
 
 if __name__ == "__main__":

@@ -25,9 +25,7 @@ from .MLP import SteeringMLP, SteeringMLPDataset, train_steering_mlp
 
 # Configuration specifying steering layer indices and their corresponding strengths for each model
 steering_config = {
-    "llama3.1": [(8, 0.6), (9, 0.6), (10, 0.6), (11, 0.6), (12, 0.4), (13, 0.5), (14, 0.6), (16, 0.6), (18, 0.6), (19, 0.6)],
     "qwen2.5": [(5, 0.6), (6, 0.6), (7, 0.6), (8, 0.6), (9, 0.5), (10, 0.6), (11, 0.5), (12, 0.5), (13, 0.5), (14, 0.3), (15, 0.3), (16, 0.5), (18, 0.5), (19, 0.6)],
-    "gemma2": [(6, 0.5), (8, 0.4), (10, 0.6), (11, 0.6), (12, 0.6), (13, 0.6), (14, 0.6), (15, 0.6), (16, 0.6), (18, 0.6), (22, 0.5)],
 }
 
 device = "cuda:6"
@@ -35,7 +33,7 @@ base_dir = "data"
 save_dir = "data/steering_mlp"
 
 # Loop through each specified model
-for model_name in ["llama3.1", "qwen2.5", "gemma2"]:
+for model_name in ["qwen2.5"]:
     print(f"Processing model: {model_name}")
     embeds_dir = f"{base_dir}/embeddings/{model_name}"
     layers_ratio_list = steering_config[model_name]
