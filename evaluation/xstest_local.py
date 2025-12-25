@@ -14,8 +14,8 @@ def load_local_judge(model_name="Qwen/Qwen2.5-7B-Instruct", device="cuda:0"):
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         device_map=device,
-        torch_dtype=torch.bfloat16,
-        load_in_4bit=True
+        torch_dtype="auto",
+        trust_remote_code=True
     )
     return tokenizer, model
 
