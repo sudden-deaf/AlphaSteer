@@ -33,12 +33,12 @@ def calc_steering_main(embedding_dir: str,
     device: str = "cuda",
 ):
     # Set device
-    device = torch.device(args.device)
+    device = torch.device(device)
 
-    logger.info(f"model_name: {args.model_name}")
-    embeds_dir = args.embedding_dir
+    logger.info(f"model_name: {model_name}")
+    embeds_dir = embedding_dir
     # Get layer-specific configuration (layer number and nullspace ratio)
-    layers_ratio_list = AlphaSteer_CALCULATION_CONFIG[args.model_name]
+    layers_ratio_list = AlphaSteer_CALCULATION_CONFIG[model_name]
     
     # Load benign embeddings
     H_benign_train_10000 = torch.load(f"{embeds_dir}/embeds_benign_train.pt", map_location=device).float()
@@ -69,7 +69,7 @@ def calc_steering_main(embedding_dir: str,
     logger.info(f"H_harmful_train.shape: {H_harmful_train.shape}")
     
     # Load refusal vectors (directions that lead to refusal responses)
-    refusal_vectors_path = f"data/refusal_vectors/RV/{args.model_name}_RV_refusal.pkl"
+    refusal_vectors_path = f"data/refusal_vectors/RV/{model_name}_RV_refusal.pkl"
     refusal_vectors = pickle.load(open(refusal_vectors_path, "rb"))
     refusal_vectors = torch.tensor(
         refusal_vectors, dtype=torch.float32).to(device)
@@ -111,9 +111,9 @@ def calc_steering_main(embedding_dir: str,
         logger.info(f"steering matrix layer {layer} norm: {steering_matrix_norm}")
 
     # Save the steering matrix
-    os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
-    torch.save(steering_matrix, args.save_path)
-    logger.info(f"steering matrix saved to {args.save_path}")
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    torch.save(steering_matrix, save_path)
+    logger.info(f"steering matrix saved to {save_path}")
 
     # Clean up memory
     H_benign_train = None; H_harmful_train = None
