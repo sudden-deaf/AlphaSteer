@@ -25,8 +25,13 @@ def parse_args():
     
     return parser.parse_args()
 
-if __name__ == "__main__":
-    args = parse_args()    
+ 
+
+def calc_steering_main(embedding_dir: str,
+    model_name: str,
+    save_path: str,
+    device: str = "cuda",
+):
     # Set device
     device = torch.device(args.device)
 
@@ -114,3 +119,12 @@ if __name__ == "__main__":
     H_benign_train = None; H_harmful_train = None
     P = None; tilde_delta = None; steering_matrix = None
     torch.cuda.empty_cache()
+
+if __name__ == "__main__":
+    args = parse_args()   
+    calc_steering_main(
+        embedding_dir=args.embedding_dir,
+        model_name=args.model_name,
+        save_path=args.save_path,
+        device=args.device,
+    )

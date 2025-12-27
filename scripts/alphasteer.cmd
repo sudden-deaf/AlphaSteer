@@ -6,10 +6,10 @@ REM Configuration
 REM =========================
 
 set TRAIN_VAL_DIR=data\instructions\train_val
-set EMBEDDING_DIR=data\embeddings\llama3.1
-set NICKNAME=llama3.1
-set MODEL_NAME=meta-llama/Llama-3.1-8B-Instruct
-set DEVICE=cuda:4
+set EMBEDDING_DIR=data\embeddings\TinyLlama
+set NICKNAME=TinyLlama
+set MODEL_NAME=TinyLlama/TinyLlama-1.1B-Chat-v1.0
+set DEVICE=cpu
 
 REM =========================
 REM Extract embeddings
